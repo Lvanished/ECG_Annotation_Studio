@@ -1,0 +1,3 @@
+# Annotation schema v0.1.0
+
+Stored as `annotations` with UUID, recording_id, lead, tier, label, start integer sample index, nullable end integer sample index, JSON attributes, source, review status, beat_id and revision. `end=null` denotes a point; intervals use `[start,end)`; both are bounds-checked against the recording. Overlap is permitted. Updates require matching revision (HTTP 409 otherwise). An audit history table captures snapshots on create, before update, after update, and delete. This is a flexible prototype schema; no enforced label ontology or cross-lead relationship table exists yet.

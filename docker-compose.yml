@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ecg
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-localdevonly}
+      POSTGRES_DB: ecg
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ecg"]
+      interval: 3s
+      retries: 20
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://ecg:${POSTGRES_PASSWORD:-localdevonly}@db:5432/ecg
+      DATA_DIR: /data
+    volumes:
+      - ./data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+volumes:
+  pgdata:

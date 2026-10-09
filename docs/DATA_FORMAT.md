@@ -1,0 +1,3 @@
+# Data format
+
+Upload a compressed NumPy `.npz` with `signal` float array shaped `[sample, lead]`, `fs` scalar sampling rate, `leads` string array. All physical signal values MUST be millivolts. `scripts/import_wfdb.py` uses WFDB calibrated `p_signal` and converts microvolts to millivolts where declared. Never treat raw WFDB digital ADC counts as mV. The current importer rejects NaN/Inf, unknown units and mismatched lead counts. JSON exports include recording metadata and annotations, but **do not include waveform arrays**. Original WFDB reference annotation files are not converted into application annotations.
