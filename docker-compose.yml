@@ -1,33 +1,84 @@
+# ECG Annotation Studio
+#   copy .env.example .env      (Windows)   |   cp .env.example .env   (Linux/macOS)
+#   docker compose up --build
+#   -> http://localhost:5173   (API docs: http://localhost:5173/api/docs)
+#
+# Only the frontend port is published. PostgreSQL and the API stay on the
+# private compose network, so nothing clashes with services already running on
+# the host (e.g. a local PostgreSQL on 5432 or another app on 8000).
+#
+# Backend tests against PostgreSQL (throwaway database, removed afterwards):
+#   docker compose --profile test run --rm backend-tests
+
+name: ecg-annotation-studio
+
 services:
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ecg
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-localdevonly}
-      POSTGRES_DB: ecg
+      POSTGRES_USER: ${POSTGRES_USER:-ecg}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env (copy .env.example .env)}
+      POSTGRES_DB: ${POSTGRES_DB:-ecg}
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ecg"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ecg} -d ${POSTGRES_DB:-ecg}"]
       interval: 3s
-      retries: 20
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
   backend:
     build: ./backend
     environment:
-      DATABASE_URL: postgresql+psycopg://ecg:${POSTGRES_PASSWORD:-localdevonly}@db:5432/ecg
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-ecg}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-ecg}
       DATA_DIR: /data
+      AUTO_MIGRATE: "1"
+      AUTO_IMPORT_SAMPLES: ${AUTO_IMPORT_SAMPLES:-1}
+      ROOT_PATH: /api
     volumes:
-      - ./data:/data
-    ports:
-      - "8000:8000"
+      - appdata:/data
+      - ./data/physionet:/data/physionet
     depends_on:
       db:
         condition: service_healthy
+    restart: unless-stopped
+
   frontend:
     build: ./frontend
     ports:
-      - "5173:5173"
+      - "${FRONTEND_PORT:-5173}:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db-test:
+    profiles: ["test"]
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ecg_test
+      POSTGRES_PASSWORD: ecg_test_only
+      POSTGRES_DB: ecg_test
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ecg_test -d ecg_test"]
+      interval: 2s
+      retries: 30
+
+  backend-tests:
+    profiles: ["test"]
+    build: ./backend
+    environment:
+      TEST_DATABASE_URL: postgresql+psycopg://ecg_test:ecg_test_only@db-test:5432/ecg_test
+    volumes:
+      - ./data/physionet:/data/physionet:ro
+    depends_on:
+      db-test:
+        condition: service_healthy
+    command: ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider", "tests"]
+
 volumes:
   pgdata:
+  appdata:

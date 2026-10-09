@@ -1,9 +1,25 @@
+# secrets / local config
 .env
+
+# environments and caches
 node_modules/
 .venv/
 __pycache__/
 .pytest_cache/
+*.pyc
+
+# build / test output
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+
+# runtime data (bundled PhysioNet samples in data/physionet are versioned)
+data/physionet_eval/
+data/signals/
+data/exports/
+data/uploads/
 *.db
-*.npz
-*.dat
-*.atr
+*.db-journal
+
+# release artefacts
+*.zip

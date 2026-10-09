@@ -1,0 +1,8981 @@
+{
+ "protocol": "--------\nR peaks, MIT-BIH (48 records, 30 min, 360 Hz):\n  * reference = every ``.atr`` beat annotation (beat symbols only), channel 0;\n  * a detection matches a reference beat if within +/-150 ms (ANSI/AAMI EC57\n    tolerance), greedy one-to-one; TP/FP/FN, precision (+P), recall (Se), F1;\n  * reported for all 48 records and for the 44 non-paced records\n    (102, 104, 107, 217 excluded, as in AAMI practice). Unlike EC57 the first\n    5 minutes are *not* excluded (the detectors have no learning phase to\n    discount), so the numbers are slightly conservative.\nR peaks, LUDB (200 records, 10 s, 500 Hz, lead II):\n  * reference = 'N' annotations of lead II; LUDB leaves the first/last beat\n    of many records unannotated, so detections are scored only inside\n    [first annotated QRS onset - 150 ms, last annotated QRS offset + 150 ms].\nDelineation, LUDB lead II (experimental delineator):\n  * anchored on the *reference* R peaks so that delineation error is isolated\n    from detection error;\n  * for every reference P/QRS/T interval of lead II, the delineated wave of the\n    same beat is compared: onset error = detected start - reference start,\n    offset error = (detected end - 1) - (reference end - 1), in ms;\n  * reported: n reference waves, n delineated, sensitivity (wave found),\n    mean, SD and median |error|, and the fraction within the CSE 2*SD\n    tolerances (P on 10.2 / off 12.7, QRS on 6.5 / off 11.6, T off 30.6 ms);\n  * thresholds were calibrated on records 1-100 only\n    (scripts/calibrate_delineation.py); records 101-200 are the held-out split.",
+ "tolerance_ms": 150.0,
+ "algorithms": {
+  "scipy_pan_tompkins": "1.1.0",
+  "wfdb_xqrs": "wfdb",
+  "delineator": "0.3.0"
+ },
+ "generated": "2026-10-09T17:06:57",
+ "mitdb": {
+  "records": [
+   {
+    "record": "100",
+    "lead": "MLII",
+    "n_ref": 2273,
+    "scipy_pan_tompkins": {
+     "TP": 2273,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.11
+    },
+    "wfdb_xqrs": {
+     "TP": 2273,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.25
+    }
+   },
+   {
+    "record": "101",
+    "lead": "MLII",
+    "n_ref": 1865,
+    "scipy_pan_tompkins": {
+     "TP": 1863,
+     "FP": 5,
+     "FN": 2,
+     "precision": 0.99732,
+     "recall": 0.99893,
+     "F1": 0.99812,
+     "seconds": 0.1
+    },
+    "wfdb_xqrs": {
+     "TP": 1864,
+     "FP": 4,
+     "FN": 1,
+     "precision": 0.99786,
+     "recall": 0.99946,
+     "F1": 0.99866,
+     "seconds": 2.19
+    }
+   },
+   {
+    "record": "102",
+    "lead": "V5",
+    "n_ref": 2187,
+    "scipy_pan_tompkins": {
+     "TP": 2187,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.11
+    },
+    "wfdb_xqrs": {
+     "TP": 2187,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.25
+    }
+   },
+   {
+    "record": "103",
+    "lead": "MLII",
+    "n_ref": 2084,
+    "scipy_pan_tompkins": {
+     "TP": 2083,
+     "FP": 0,
+     "FN": 1,
+     "precision": 1.0,
+     "recall": 0.99952,
+     "F1": 0.99976,
+     "seconds": 0.1
+    },
+    "wfdb_xqrs": {
+     "TP": 2082,
+     "FP": 0,
+     "FN": 2,
+     "precision": 1.0,
+     "recall": 0.99904,
+     "F1": 0.99952,
+     "seconds": 2.27
+    }
+   },
+   {
+    "record": "104",
+    "lead": "V5",
+    "n_ref": 2229,
+    "scipy_pan_tompkins": {
+     "TP": 2227,
+     "FP": 2,
+     "FN": 2,
+     "precision": 0.9991,
+     "recall": 0.9991,
+     "F1": 0.9991,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 2223,
+     "FP": 16,
+     "FN": 6,
+     "precision": 0.99285,
+     "recall": 0.99731,
+     "F1": 0.99508,
+     "seconds": 2.27
+    }
+   },
+   {
+    "record": "105",
+    "lead": "MLII",
+    "n_ref": 2572,
+    "scipy_pan_tompkins": {
+     "TP": 2561,
+     "FP": 45,
+     "FN": 11,
+     "precision": 0.98273,
+     "recall": 0.99572,
+     "F1": 0.98919,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 2570,
+     "FP": 32,
+     "FN": 2,
+     "precision": 0.9877,
+     "recall": 0.99922,
+     "F1": 0.99343,
+     "seconds": 2.29
+    }
+   },
+   {
+    "record": "106",
+    "lead": "MLII",
+    "n_ref": 2027,
+    "scipy_pan_tompkins": {
+     "TP": 2024,
+     "FP": 2,
+     "FN": 3,
+     "precision": 0.99901,
+     "recall": 0.99852,
+     "F1": 0.99877,
+     "seconds": 0.15
+    },
+    "wfdb_xqrs": {
+     "TP": 1938,
+     "FP": 1,
+     "FN": 89,
+     "precision": 0.99948,
+     "recall": 0.95609,
+     "F1": 0.97731,
+     "seconds": 2.49
+    }
+   },
+   {
+    "record": "107",
+    "lead": "MLII",
+    "n_ref": 2137,
+    "scipy_pan_tompkins": {
+     "TP": 2128,
+     "FP": 1,
+     "FN": 9,
+     "precision": 0.99953,
+     "recall": 0.99579,
+     "F1": 0.99766,
+     "seconds": 0.15
+    },
+    "wfdb_xqrs": {
+     "TP": 2134,
+     "FP": 0,
+     "FN": 3,
+     "precision": 1.0,
+     "recall": 0.9986,
+     "F1": 0.9993,
+     "seconds": 2.54
+    }
+   },
+   {
+    "record": "108",
+    "lead": "MLII",
+    "n_ref": 1763,
+    "scipy_pan_tompkins": {
+     "TP": 1566,
+     "FP": 329,
+     "FN": 197,
+     "precision": 0.82639,
+     "recall": 0.88826,
+     "F1": 0.85621,
+     "seconds": 0.16
+    },
+    "wfdb_xqrs": {
+     "TP": 1662,
+     "FP": 268,
+     "FN": 101,
+     "precision": 0.86114,
+     "recall": 0.94271,
+     "F1": 0.90008,
+     "seconds": 2.43
+    }
+   },
+   {
+    "record": "109",
+    "lead": "MLII",
+    "n_ref": 2532,
+    "scipy_pan_tompkins": {
+     "TP": 2528,
+     "FP": 0,
+     "FN": 4,
+     "precision": 1.0,
+     "recall": 0.99842,
+     "F1": 0.99921,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 2527,
+     "FP": 1,
+     "FN": 5,
+     "precision": 0.9996,
+     "recall": 0.99803,
+     "F1": 0.99881,
+     "seconds": 2.49
+    }
+   },
+   {
+    "record": "111",
+    "lead": "MLII",
+    "n_ref": 2124,
+    "scipy_pan_tompkins": {
+     "TP": 2123,
+     "FP": 1,
+     "FN": 1,
+     "precision": 0.99953,
+     "recall": 0.99953,
+     "F1": 0.99953,
+     "seconds": 0.13
+    },
+    "wfdb_xqrs": {
+     "TP": 2123,
+     "FP": 0,
+     "FN": 1,
+     "precision": 1.0,
+     "recall": 0.99953,
+     "F1": 0.99976,
+     "seconds": 2.58
+    }
+   },
+   {
+    "record": "112",
+    "lead": "MLII",
+    "n_ref": 2539,
+    "scipy_pan_tompkins": {
+     "TP": 2539,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 2539,
+     "FP": 1,
+     "FN": 0,
+     "precision": 0.99961,
+     "recall": 1.0,
+     "F1": 0.9998,
+     "seconds": 2.44
+    }
+   },
+   {
+    "record": "113",
+    "lead": "MLII",
+    "n_ref": 1795,
+    "scipy_pan_tompkins": {
+     "TP": 1795,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.17
+    },
+    "wfdb_xqrs": {
+     "TP": 1795,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.62
+    }
+   },
+   {
+    "record": "114",
+    "lead": "V5",
+    "n_ref": 1879,
+    "scipy_pan_tompkins": {
+     "TP": 1839,
+     "FP": 207,
+     "FN": 40,
+     "precision": 0.89883,
+     "recall": 0.97871,
+     "F1": 0.93707,
+     "seconds": 0.18
+    },
+    "wfdb_xqrs": {
+     "TP": 1870,
+     "FP": 2,
+     "FN": 9,
+     "precision": 0.99893,
+     "recall": 0.99521,
+     "F1": 0.99707,
+     "seconds": 2.42
+    }
+   },
+   {
+    "record": "115",
+    "lead": "MLII",
+    "n_ref": 1953,
+    "scipy_pan_tompkins": {
+     "TP": 1953,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.16
+    },
+    "wfdb_xqrs": {
+     "TP": 1953,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.54
+    }
+   },
+   {
+    "record": "116",
+    "lead": "MLII",
+    "n_ref": 2412,
+    "scipy_pan_tompkins": {
+     "TP": 2401,
+     "FP": 12,
+     "FN": 11,
+     "precision": 0.99503,
+     "recall": 0.99544,
+     "F1": 0.99523,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 2389,
+     "FP": 2,
+     "FN": 23,
+     "precision": 0.99916,
+     "recall": 0.99046,
+     "F1": 0.99479,
+     "seconds": 2.37
+    }
+   },
+   {
+    "record": "117",
+    "lead": "MLII",
+    "n_ref": 1535,
+    "scipy_pan_tompkins": {
+     "TP": 1535,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 1535,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.28
+    }
+   },
+   {
+    "record": "118",
+    "lead": "MLII",
+    "n_ref": 2278,
+    "scipy_pan_tompkins": {
+     "TP": 2278,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 2277,
+     "FP": 0,
+     "FN": 1,
+     "precision": 1.0,
+     "recall": 0.99956,
+     "F1": 0.99978,
+     "seconds": 2.51
+    }
+   },
+   {
+    "record": "119",
+    "lead": "MLII",
+    "n_ref": 1987,
+    "scipy_pan_tompkins": {
+     "TP": 1987,
+     "FP": 1,
+     "FN": 0,
+     "precision": 0.9995,
+     "recall": 1.0,
+     "F1": 0.99975,
+     "seconds": 0.11
+    },
+    "wfdb_xqrs": {
+     "TP": 1987,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.55
+    }
+   },
+   {
+    "record": "121",
+    "lead": "MLII",
+    "n_ref": 1863,
+    "scipy_pan_tompkins": {
+     "TP": 1861,
+     "FP": 0,
+     "FN": 2,
+     "precision": 1.0,
+     "recall": 0.99893,
+     "F1": 0.99946,
+     "seconds": 0.18
+    },
+    "wfdb_xqrs": {
+     "TP": 1862,
+     "FP": 1,
+     "FN": 1,
+     "precision": 0.99946,
+     "recall": 0.99946,
+     "F1": 0.99946,
+     "seconds": 2.43
+    }
+   },
+   {
+    "record": "122",
+    "lead": "MLII",
+    "n_ref": 2476,
+    "scipy_pan_tompkins": {
+     "TP": 2476,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.19
+    },
+    "wfdb_xqrs": {
+     "TP": 2476,
+     "FP": 1,
+     "FN": 0,
+     "precision": 0.9996,
+     "recall": 1.0,
+     "F1": 0.9998,
+     "seconds": 2.55
+    }
+   },
+   {
+    "record": "123",
+    "lead": "MLII",
+    "n_ref": 1518,
+    "scipy_pan_tompkins": {
+     "TP": 1515,
+     "FP": 0,
+     "FN": 3,
+     "precision": 1.0,
+     "recall": 0.99802,
+     "F1": 0.99901,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 1515,
+     "FP": 0,
+     "FN": 3,
+     "precision": 1.0,
+     "recall": 0.99802,
+     "F1": 0.99901,
+     "seconds": 2.52
+    }
+   },
+   {
+    "record": "124",
+    "lead": "MLII",
+    "n_ref": 1619,
+    "scipy_pan_tompkins": {
+     "TP": 1606,
+     "FP": 7,
+     "FN": 13,
+     "precision": 0.99566,
+     "recall": 0.99197,
+     "F1": 0.99381,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 1590,
+     "FP": 0,
+     "FN": 29,
+     "precision": 1.0,
+     "recall": 0.98209,
+     "F1": 0.99096,
+     "seconds": 2.59
+    }
+   },
+   {
+    "record": "200",
+    "lead": "MLII",
+    "n_ref": 2601,
+    "scipy_pan_tompkins": {
+     "TP": 2592,
+     "FP": 6,
+     "FN": 9,
+     "precision": 0.99769,
+     "recall": 0.99654,
+     "F1": 0.99711,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 2597,
+     "FP": 3,
+     "FN": 4,
+     "precision": 0.99885,
+     "recall": 0.99846,
+     "F1": 0.99865,
+     "seconds": 2.5
+    }
+   },
+   {
+    "record": "201",
+    "lead": "MLII",
+    "n_ref": 1963,
+    "scipy_pan_tompkins": {
+     "TP": 1910,
+     "FP": 6,
+     "FN": 53,
+     "precision": 0.99687,
+     "recall": 0.973,
+     "F1": 0.98479,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 1887,
+     "FP": 0,
+     "FN": 76,
+     "precision": 1.0,
+     "recall": 0.96128,
+     "F1": 0.98026,
+     "seconds": 2.48
+    }
+   },
+   {
+    "record": "202",
+    "lead": "MLII",
+    "n_ref": 2136,
+    "scipy_pan_tompkins": {
+     "TP": 2130,
+     "FP": 0,
+     "FN": 6,
+     "precision": 1.0,
+     "recall": 0.99719,
+     "F1": 0.99859,
+     "seconds": 0.15
+    },
+    "wfdb_xqrs": {
+     "TP": 2126,
+     "FP": 0,
+     "FN": 10,
+     "precision": 1.0,
+     "recall": 0.99532,
+     "F1": 0.99765,
+     "seconds": 2.56
+    }
+   },
+   {
+    "record": "203",
+    "lead": "MLII",
+    "n_ref": 2980,
+    "scipy_pan_tompkins": {
+     "TP": 2833,
+     "FP": 64,
+     "FN": 147,
+     "precision": 0.97791,
+     "recall": 0.95067,
+     "F1": 0.9641,
+     "seconds": 0.2
+    },
+    "wfdb_xqrs": {
+     "TP": 2915,
+     "FP": 18,
+     "FN": 65,
+     "precision": 0.99386,
+     "recall": 0.97819,
+     "F1": 0.98596,
+     "seconds": 2.46
+    }
+   },
+   {
+    "record": "205",
+    "lead": "MLII",
+    "n_ref": 2656,
+    "scipy_pan_tompkins": {
+     "TP": 2651,
+     "FP": 2,
+     "FN": 5,
+     "precision": 0.99925,
+     "recall": 0.99812,
+     "F1": 0.99868,
+     "seconds": 0.17
+    },
+    "wfdb_xqrs": {
+     "TP": 2652,
+     "FP": 0,
+     "FN": 4,
+     "precision": 1.0,
+     "recall": 0.99849,
+     "F1": 0.99925,
+     "seconds": 2.53
+    }
+   },
+   {
+    "record": "207",
+    "lead": "MLII",
+    "n_ref": 1860,
+    "scipy_pan_tompkins": {
+     "TP": 1824,
+     "FP": 398,
+     "FN": 36,
+     "precision": 0.82088,
+     "recall": 0.98065,
+     "F1": 0.89368,
+     "seconds": 0.18
+    },
+    "wfdb_xqrs": {
+     "TP": 1812,
+     "FP": 387,
+     "FN": 48,
+     "precision": 0.82401,
+     "recall": 0.97419,
+     "F1": 0.89283,
+     "seconds": 2.55
+    }
+   },
+   {
+    "record": "208",
+    "lead": "MLII",
+    "n_ref": 2955,
+    "scipy_pan_tompkins": {
+     "TP": 2938,
+     "FP": 4,
+     "FN": 17,
+     "precision": 0.99864,
+     "recall": 0.99425,
+     "F1": 0.99644,
+     "seconds": 0.2
+    },
+    "wfdb_xqrs": {
+     "TP": 2725,
+     "FP": 6,
+     "FN": 230,
+     "precision": 0.9978,
+     "recall": 0.92217,
+     "F1": 0.95849,
+     "seconds": 2.55
+    }
+   },
+   {
+    "record": "209",
+    "lead": "MLII",
+    "n_ref": 3005,
+    "scipy_pan_tompkins": {
+     "TP": 3005,
+     "FP": 3,
+     "FN": 0,
+     "precision": 0.999,
+     "recall": 1.0,
+     "F1": 0.9995,
+     "seconds": 0.09
+    },
+    "wfdb_xqrs": {
+     "TP": 3005,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.38
+    }
+   },
+   {
+    "record": "210",
+    "lead": "MLII",
+    "n_ref": 2650,
+    "scipy_pan_tompkins": {
+     "TP": 2618,
+     "FP": 8,
+     "FN": 32,
+     "precision": 0.99695,
+     "recall": 0.98792,
+     "F1": 0.99242,
+     "seconds": 0.11
+    },
+    "wfdb_xqrs": {
+     "TP": 2590,
+     "FP": 4,
+     "FN": 60,
+     "precision": 0.99846,
+     "recall": 0.97736,
+     "F1": 0.9878,
+     "seconds": 2.34
+    }
+   },
+   {
+    "record": "212",
+    "lead": "MLII",
+    "n_ref": 2748,
+    "scipy_pan_tompkins": {
+     "TP": 2748,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 2748,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.49
+    }
+   },
+   {
+    "record": "213",
+    "lead": "MLII",
+    "n_ref": 3251,
+    "scipy_pan_tompkins": {
+     "TP": 3248,
+     "FP": 1,
+     "FN": 3,
+     "precision": 0.99969,
+     "recall": 0.99908,
+     "F1": 0.99938,
+     "seconds": 0.15
+    },
+    "wfdb_xqrs": {
+     "TP": 3244,
+     "FP": 0,
+     "FN": 7,
+     "precision": 1.0,
+     "recall": 0.99785,
+     "F1": 0.99892,
+     "seconds": 2.49
+    }
+   },
+   {
+    "record": "214",
+    "lead": "MLII",
+    "n_ref": 2262,
+    "scipy_pan_tompkins": {
+     "TP": 2257,
+     "FP": 2,
+     "FN": 5,
+     "precision": 0.99911,
+     "recall": 0.99779,
+     "F1": 0.99845,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 2253,
+     "FP": 0,
+     "FN": 9,
+     "precision": 1.0,
+     "recall": 0.99602,
+     "F1": 0.99801,
+     "seconds": 2.4
+    }
+   },
+   {
+    "record": "215",
+    "lead": "MLII",
+    "n_ref": 3363,
+    "scipy_pan_tompkins": {
+     "TP": 3360,
+     "FP": 1,
+     "FN": 3,
+     "precision": 0.9997,
+     "recall": 0.99911,
+     "F1": 0.99941,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 3361,
+     "FP": 0,
+     "FN": 2,
+     "precision": 1.0,
+     "recall": 0.99941,
+     "F1": 0.9997,
+     "seconds": 2.39
+    }
+   },
+   {
+    "record": "217",
+    "lead": "MLII",
+    "n_ref": 2208,
+    "scipy_pan_tompkins": {
+     "TP": 2166,
+     "FP": 37,
+     "FN": 42,
+     "precision": 0.9832,
+     "recall": 0.98098,
+     "F1": 0.98209,
+     "seconds": 0.16
+    },
+    "wfdb_xqrs": {
+     "TP": 2200,
+     "FP": 2,
+     "FN": 8,
+     "precision": 0.99909,
+     "recall": 0.99638,
+     "F1": 0.99773,
+     "seconds": 2.53
+    }
+   },
+   {
+    "record": "219",
+    "lead": "MLII",
+    "n_ref": 2154,
+    "scipy_pan_tompkins": {
+     "TP": 2148,
+     "FP": 1,
+     "FN": 6,
+     "precision": 0.99953,
+     "recall": 0.99721,
+     "F1": 0.99837,
+     "seconds": 0.16
+    },
+    "wfdb_xqrs": {
+     "TP": 2146,
+     "FP": 0,
+     "FN": 8,
+     "precision": 1.0,
+     "recall": 0.99629,
+     "F1": 0.99814,
+     "seconds": 2.61
+    }
+   },
+   {
+    "record": "220",
+    "lead": "MLII",
+    "n_ref": 2048,
+    "scipy_pan_tompkins": {
+     "TP": 2048,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.12
+    },
+    "wfdb_xqrs": {
+     "TP": 2047,
+     "FP": 0,
+     "FN": 1,
+     "precision": 1.0,
+     "recall": 0.99951,
+     "F1": 0.99976,
+     "seconds": 2.62
+    }
+   },
+   {
+    "record": "221",
+    "lead": "MLII",
+    "n_ref": 2427,
+    "scipy_pan_tompkins": {
+     "TP": 2419,
+     "FP": 4,
+     "FN": 8,
+     "precision": 0.99835,
+     "recall": 0.9967,
+     "F1": 0.99753,
+     "seconds": 0.11
+    },
+    "wfdb_xqrs": {
+     "TP": 2395,
+     "FP": 0,
+     "FN": 32,
+     "precision": 1.0,
+     "recall": 0.98681,
+     "F1": 0.99336,
+     "seconds": 2.51
+    }
+   },
+   {
+    "record": "222",
+    "lead": "MLII",
+    "n_ref": 2483,
+    "scipy_pan_tompkins": {
+     "TP": 2463,
+     "FP": 1,
+     "FN": 20,
+     "precision": 0.99959,
+     "recall": 0.99195,
+     "F1": 0.99576,
+     "seconds": 0.13
+    },
+    "wfdb_xqrs": {
+     "TP": 2481,
+     "FP": 1,
+     "FN": 2,
+     "precision": 0.9996,
+     "recall": 0.99919,
+     "F1": 0.9994,
+     "seconds": 2.39
+    }
+   },
+   {
+    "record": "223",
+    "lead": "MLII",
+    "n_ref": 2605,
+    "scipy_pan_tompkins": {
+     "TP": 2595,
+     "FP": 0,
+     "FN": 10,
+     "precision": 1.0,
+     "recall": 0.99616,
+     "F1": 0.99808,
+     "seconds": 0.11
+    },
+    "wfdb_xqrs": {
+     "TP": 2602,
+     "FP": 0,
+     "FN": 3,
+     "precision": 1.0,
+     "recall": 0.99885,
+     "F1": 0.99942,
+     "seconds": 2.58
+    }
+   },
+   {
+    "record": "228",
+    "lead": "MLII",
+    "n_ref": 2053,
+    "scipy_pan_tompkins": {
+     "TP": 2042,
+     "FP": 9,
+     "FN": 11,
+     "precision": 0.99561,
+     "recall": 0.99464,
+     "F1": 0.99513,
+     "seconds": 0.17
+    },
+    "wfdb_xqrs": {
+     "TP": 2048,
+     "FP": 14,
+     "FN": 5,
+     "precision": 0.99321,
+     "recall": 0.99756,
+     "F1": 0.99538,
+     "seconds": 2.49
+    }
+   },
+   {
+    "record": "230",
+    "lead": "MLII",
+    "n_ref": 2256,
+    "scipy_pan_tompkins": {
+     "TP": 2256,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.19
+    },
+    "wfdb_xqrs": {
+     "TP": 2256,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 2.39
+    }
+   },
+   {
+    "record": "231",
+    "lead": "MLII",
+    "n_ref": 1571,
+    "scipy_pan_tompkins": {
+     "TP": 1571,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0,
+     "seconds": 0.17
+    },
+    "wfdb_xqrs": {
+     "TP": 1570,
+     "FP": 0,
+     "FN": 1,
+     "precision": 1.0,
+     "recall": 0.99936,
+     "F1": 0.99968,
+     "seconds": 2.47
+    }
+   },
+   {
+    "record": "232",
+    "lead": "MLII",
+    "n_ref": 1780,
+    "scipy_pan_tompkins": {
+     "TP": 1752,
+     "FP": 136,
+     "FN": 28,
+     "precision": 0.92797,
+     "recall": 0.98427,
+     "F1": 0.95529,
+     "seconds": 0.14
+    },
+    "wfdb_xqrs": {
+     "TP": 1779,
+     "FP": 2,
+     "FN": 1,
+     "precision": 0.99888,
+     "recall": 0.99944,
+     "F1": 0.99916,
+     "seconds": 2.41
+    }
+   },
+   {
+    "record": "233",
+    "lead": "MLII",
+    "n_ref": 3079,
+    "scipy_pan_tompkins": {
+     "TP": 3077,
+     "FP": 0,
+     "FN": 2,
+     "precision": 1.0,
+     "recall": 0.99935,
+     "F1": 0.99968,
+     "seconds": 0.19
+    },
+    "wfdb_xqrs": {
+     "TP": 3064,
+     "FP": 0,
+     "FN": 15,
+     "precision": 1.0,
+     "recall": 0.99513,
+     "F1": 0.99756,
+     "seconds": 2.6
+    }
+   },
+   {
+    "record": "234",
+    "lead": "MLII",
+    "n_ref": 2753,
+    "scipy_pan_tompkins": {
+     "TP": 2752,
+     "FP": 0,
+     "FN": 1,
+     "precision": 1.0,
+     "recall": 0.99964,
+     "F1": 0.99982,
+     "seconds": 0.18
+    },
+    "wfdb_xqrs": {
+     "TP": 2750,
+     "FP": 0,
+     "FN": 3,
+     "precision": 1.0,
+     "recall": 0.99891,
+     "F1": 0.99945,
+     "seconds": 2.48
+    }
+   }
+  ],
+  "all": {
+   "scipy_pan_tompkins": {
+    "TP": 108751,
+    "FP": 1295,
+    "FN": 743,
+    "precision": 0.98823,
+    "recall": 0.99321,
+    "F1": 0.99072,
+    "n_records": 48
+   },
+   "wfdb_xqrs": {
+    "TP": 108624,
+    "FP": 766,
+    "FN": 870,
+    "precision": 0.993,
+    "recall": 0.99205,
+    "F1": 0.99253,
+    "n_records": 48
+   }
+  },
+  "non_paced_44": {
+   "scipy_pan_tompkins": {
+    "TP": 100043,
+    "FP": 1255,
+    "FN": 690,
+    "precision": 0.98761,
+    "recall": 0.99315,
+    "F1": 0.99037,
+    "n_records": 44
+   },
+   "wfdb_xqrs": {
+    "TP": 99880,
+    "FP": 748,
+    "FN": 853,
+    "precision": 0.99257,
+    "recall": 0.99153,
+    "F1": 0.99205,
+    "n_records": 44
+   }
+  }
+ },
+ "ludb": {
+  "records": [
+   {
+    "record": "1",
+    "n_ref_r": 6,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 6
+     },
+     "T": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     }
+    }
+   },
+   {
+    "record": "2",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "3",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "4",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "5",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "6",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "7",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "8",
+    "n_ref_r": 10,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 4
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "9",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "10",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "11",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "12",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "13",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "14",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "15",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 1,
+     "FN": 0,
+     "precision": 0.88889,
+     "recall": 1.0,
+     "F1": 0.94118
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "16",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "17",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "18",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "19",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "20",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "21",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "22",
+    "n_ref_r": 11,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "23",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "24",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 7,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 2,
+      "n_delineated": 3
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 3,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "25",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "26",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 6,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "27",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "28",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "29",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "30",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "31",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "32",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "33",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "34",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 8,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "35",
+    "n_ref_r": 20,
+    "rhythm": "Atrial flutter, typical.",
+    "scipy_pan_tompkins": {
+     "TP": 20,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 20,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 20
+     },
+     "QRS": {
+      "n_ref": 20,
+      "n_matched": 20,
+      "n_delineated": 20
+     },
+     "T": {
+      "n_ref": 19,
+      "n_matched": 18,
+      "n_delineated": 20
+     }
+    }
+   },
+   {
+    "record": "36",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "37",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "38",
+    "n_ref_r": 15,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 15,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 15,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 15,
+      "n_matched": 15,
+      "n_delineated": 15
+     },
+     "T": {
+      "n_ref": 14,
+      "n_matched": 14,
+      "n_delineated": 15
+     }
+    }
+   },
+   {
+    "record": "39",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "40",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "41",
+    "n_ref_r": 6,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 6
+     },
+     "T": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     }
+    }
+   },
+   {
+    "record": "42",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "43",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "44",
+    "n_ref_r": 9,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 1
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "45",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 8,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 2
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 6,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "46",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "47",
+    "n_ref_r": 6,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 6
+     },
+     "T": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     }
+    }
+   },
+   {
+    "record": "48",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "49",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "50",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "51",
+    "n_ref_r": 8,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 1
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "52",
+    "n_ref_r": 9,
+    "rhythm": "Atrial flutter, typical.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "53",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "54",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "55",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "56",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "57",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "58",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "59",
+    "n_ref_r": 6,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 3,
+     "FP": 0,
+     "FN": 3,
+     "precision": 1.0,
+     "recall": 0.5,
+     "F1": 0.66667
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 6
+     },
+     "T": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     }
+    }
+   },
+   {
+    "record": "60",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 1,
+      "n_delineated": 3
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "61",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "62",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "63",
+    "n_ref_r": 10,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "64",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "65",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 9,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "66",
+    "n_ref_r": 6,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 6
+     },
+     "T": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     }
+    }
+   },
+   {
+    "record": "67",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "68",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "69",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "70",
+    "n_ref_r": 13,
+    "rhythm": "Sinus tachycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 13
+     },
+     "QRS": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "T": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 13
+     }
+    }
+   },
+   {
+    "record": "71",
+    "n_ref_r": 8,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 6,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "72",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 4,
+      "n_delineated": 4
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "73",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "74",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 1,
+     "FP": 0,
+     "FN": 8,
+     "precision": 1.0,
+     "recall": 0.11111,
+     "F1": 0.2
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 6,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "75",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "76",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "77",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "78",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "79",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "80",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "81",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "82",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "83",
+    "n_ref_r": 10,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 10,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 2
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "84",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "85",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "86",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "87",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "88",
+    "n_ref_r": 12,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 9,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "89",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "90",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 8,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 2
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "91",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 11,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "92",
+    "n_ref_r": 14,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 14,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 1,
+     "precision": 1.0,
+     "recall": 0.92857,
+     "F1": 0.96296
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 14
+     },
+     "QRS": {
+      "n_ref": 14,
+      "n_matched": 14,
+      "n_delineated": 14
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 14
+     }
+    }
+   },
+   {
+    "record": "93",
+    "n_ref_r": 8,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 5,
+     "FP": 0,
+     "FN": 3,
+     "precision": 1.0,
+     "recall": 0.625,
+     "F1": 0.76923
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 5
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "94",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "95",
+    "n_ref_r": 9,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 4,
+     "FP": 0,
+     "FN": 5,
+     "precision": 1.0,
+     "recall": 0.44444,
+     "F1": 0.61538
+    },
+    "wfdb_xqrs": {
+     "TP": 3,
+     "FP": 0,
+     "FN": 6,
+     "precision": 1.0,
+     "recall": 0.33333,
+     "F1": 0.5
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "96",
+    "n_ref_r": 12,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "97",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "98",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "99",
+    "n_ref_r": 12,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "100",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "101",
+    "n_ref_r": 11,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "102",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "103",
+    "n_ref_r": 14,
+    "rhythm": "Atrial flutter, typical.",
+    "scipy_pan_tompkins": {
+     "TP": 14,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 14,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 14
+     },
+     "QRS": {
+      "n_ref": 14,
+      "n_matched": 14,
+      "n_delineated": 14
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 10,
+      "n_delineated": 14
+     }
+    }
+   },
+   {
+    "record": "104",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 7,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "105",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 4,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "106",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "107",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "108",
+    "n_ref_r": 11,
+    "rhythm": "Irregular sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 1,
+     "FN": 0,
+     "precision": 0.91667,
+     "recall": 1.0,
+     "F1": 0.95652
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "109",
+    "n_ref_r": 15,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 15,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 15,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 4
+     },
+     "QRS": {
+      "n_ref": 15,
+      "n_matched": 15,
+      "n_delineated": 15
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 6,
+      "n_delineated": 15
+     }
+    }
+   },
+   {
+    "record": "110",
+    "n_ref_r": 13,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 13,
+     "FP": 4,
+     "FN": 0,
+     "precision": 0.76471,
+     "recall": 1.0,
+     "F1": 0.86667
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 13,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "T": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 13
+     }
+    }
+   },
+   {
+    "record": "111",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 8,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 2
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "112",
+    "n_ref_r": 14,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 14,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 14,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 14,
+      "n_matched": 14,
+      "n_delineated": 14
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 14
+     }
+    }
+   },
+   {
+    "record": "113",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "114",
+    "n_ref_r": 13,
+    "rhythm": "Sinus tachycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "QRS": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     }
+    }
+   },
+   {
+    "record": "115",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "116",
+    "n_ref_r": 13,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 2,
+     "precision": 1.0,
+     "recall": 0.84615,
+     "F1": 0.91667
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "QRS": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     }
+    }
+   },
+   {
+    "record": "117",
+    "n_ref_r": 13,
+    "rhythm": "Sinus tachycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "QRS": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     }
+    }
+   },
+   {
+    "record": "118",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "119",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "120",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 8,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "121",
+    "n_ref_r": 15,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 15,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 15,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 14,
+      "n_matched": 14,
+      "n_delineated": 15
+     },
+     "QRS": {
+      "n_ref": 15,
+      "n_matched": 15,
+      "n_delineated": 15
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 2,
+      "n_delineated": 15
+     }
+    }
+   },
+   {
+    "record": "122",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "123",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 5,
+      "n_delineated": 5
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "124",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "125",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 5,
+     "FP": 0,
+     "FN": 2,
+     "precision": 1.0,
+     "recall": 0.71429,
+     "F1": 0.83333
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 4,
+      "n_matched": 4,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 5,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "126",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 9,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 1,
+      "n_delineated": 1
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "127",
+    "n_ref_r": 4,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 4,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 4,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 3,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 4,
+      "n_matched": 4,
+      "n_delineated": 4
+     },
+     "T": {
+      "n_ref": 3,
+      "n_matched": 3,
+      "n_delineated": 4
+     }
+    }
+   },
+   {
+    "record": "128",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "129",
+    "n_ref_r": 8,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 2
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "130",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 2,
+     "FP": 0,
+     "FN": 5,
+     "precision": 1.0,
+     "recall": 0.28571,
+     "F1": 0.44444
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "131",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "132",
+    "n_ref_r": 8,
+    "rhythm": "Irregular sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "133",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 0,
+     "FP": 0,
+     "FN": 7,
+     "precision": NaN,
+     "recall": 0.0,
+     "F1": NaN
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "134",
+    "n_ref_r": 6,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 6,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     },
+     "QRS": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 6
+     },
+     "T": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 6
+     }
+    }
+   },
+   {
+    "record": "135",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "136",
+    "n_ref_r": 13,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 13
+     },
+     "QRS": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "T": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 13
+     }
+    }
+   },
+   {
+    "record": "137",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "138",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 6,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "139",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "140",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "141",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "142",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "143",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "144",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "145",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 0,
+      "n_delineated": 0
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "146",
+    "n_ref_r": 8,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "147",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "148",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "149",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "150",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "151",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "152",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 5,
+      "n_delineated": 5
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "153",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "154",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "155",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "156",
+    "n_ref_r": 7,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "157",
+    "n_ref_r": 7,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "158",
+    "n_ref_r": 8,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 4,
+      "n_delineated": 5
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "159",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "160",
+    "n_ref_r": 5,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 5,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 5,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 4,
+      "n_matched": 4,
+      "n_delineated": 5
+     },
+     "QRS": {
+      "n_ref": 5,
+      "n_matched": 5,
+      "n_delineated": 5
+     },
+     "T": {
+      "n_ref": 4,
+      "n_matched": 4,
+      "n_delineated": 5
+     }
+    }
+   },
+   {
+    "record": "161",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "162",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "163",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "164",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "165",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "166",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "167",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 5,
+      "n_delineated": 5
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "168",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "169",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "170",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "171",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 1,
+      "n_delineated": 1
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "172",
+    "n_ref_r": 7,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 7,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "T": {
+      "n_ref": 6,
+      "n_matched": 6,
+      "n_delineated": 7
+     }
+    }
+   },
+   {
+    "record": "173",
+    "n_ref_r": 12,
+    "rhythm": "Atrial fibrillation.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 0,
+      "n_matched": 0,
+      "n_delineated": 4
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "174",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "175",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "176",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "177",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "178",
+    "n_ref_r": 12,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "179",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "180",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "181",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "182",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "183",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "184",
+    "n_ref_r": 9,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "185",
+    "n_ref_r": 13,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 13,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 13
+     },
+     "QRS": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 13
+     },
+     "T": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 13
+     }
+    }
+   },
+   {
+    "record": "186",
+    "n_ref_r": 11,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "187",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 5,
+      "n_delineated": 5
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "188",
+    "n_ref_r": 14,
+    "rhythm": "Sinus tachycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 14,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 14,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 14
+     },
+     "QRS": {
+      "n_ref": 14,
+      "n_matched": 14,
+      "n_delineated": 14
+     },
+     "T": {
+      "n_ref": 13,
+      "n_matched": 13,
+      "n_delineated": 14
+     }
+    }
+   },
+   {
+    "record": "189",
+    "n_ref_r": 8,
+    "rhythm": "Sinus bradycardia.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 7
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "190",
+    "n_ref_r": 12,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 12,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 11,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 12,
+      "n_matched": 12,
+      "n_delineated": 12
+     },
+     "T": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 12
+     }
+    }
+   },
+   {
+    "record": "191",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "192",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 7,
+     "FP": 8,
+     "FN": 1,
+     "precision": 0.46667,
+     "recall": 0.875,
+     "F1": 0.6087
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "193",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "194",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "195",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   },
+   {
+    "record": "196",
+    "n_ref_r": 10,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 10,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     },
+     "QRS": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 10
+     },
+     "T": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 10
+     }
+    }
+   },
+   {
+    "record": "197",
+    "n_ref_r": 11,
+    "rhythm": "Sinus arrhythmia.",
+    "scipy_pan_tompkins": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 11,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     },
+     "QRS": {
+      "n_ref": 11,
+      "n_matched": 11,
+      "n_delineated": 11
+     },
+     "T": {
+      "n_ref": 10,
+      "n_matched": 10,
+      "n_delineated": 11
+     }
+    }
+   },
+   {
+    "record": "198",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "199",
+    "n_ref_r": 8,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 8,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     },
+     "QRS": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 8
+     },
+     "T": {
+      "n_ref": 7,
+      "n_matched": 7,
+      "n_delineated": 8
+     }
+    }
+   },
+   {
+    "record": "200",
+    "n_ref_r": 9,
+    "rhythm": "Sinus rhythm.",
+    "scipy_pan_tompkins": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "wfdb_xqrs": {
+     "TP": 9,
+     "FP": 0,
+     "FN": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "F1": 1.0
+    },
+    "delineation_counts": {
+     "P": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     },
+     "QRS": {
+      "n_ref": 9,
+      "n_matched": 9,
+      "n_delineated": 9
+     },
+     "T": {
+      "n_ref": 8,
+      "n_matched": 8,
+      "n_delineated": 9
+     }
+    }
+   }
+  ],
+  "rpeak": {
+   "scipy_pan_tompkins": {
+    "TP": 1816,
+    "FP": 14,
+    "FN": 6,
+    "precision": 0.99235,
+    "recall": 0.99671,
+    "F1": 0.99452,
+    "n_records": 199
+   },
+   "wfdb_xqrs": {
+    "TP": 1661,
+    "FP": 0,
+    "FN": 161,
+    "precision": 1.0,
+    "recall": 0.91164,
+    "F1": 0.95378,
+    "n_records": 199
+   }
+  },
+  "delineation": {
+   "errors_ms": {
+    "P_on": {
+     "n": 1309,
+     "mean": -8.58,
+     "sd": 38.29,
+     "median_abs": 12.0,
+     "within_cse_tol": 0.453,
+     "cse_tol_ms": 10.2
+    },
+    "P_off": {
+     "n": 1309,
+     "mean": -12.16,
+     "sd": 13.83,
+     "median_abs": 10.0,
+     "within_cse_tol": 0.6073,
+     "cse_tol_ms": 12.7
+    },
+    "QRS_on": {
+     "n": 1817,
+     "mean": 3.57,
+     "sd": 13.71,
+     "median_abs": 6.0,
+     "within_cse_tol": 0.5267,
+     "cse_tol_ms": 6.5
+    },
+    "QRS_off": {
+     "n": 1817,
+     "mean": 1.25,
+     "sd": 17.75,
+     "median_abs": 6.0,
+     "within_cse_tol": 0.6896,
+     "cse_tol_ms": 11.6
+    },
+    "T_on": {
+     "n": 1604,
+     "mean": 14.2,
+     "sd": 52.68,
+     "median_abs": 30.0
+    },
+    "T_off": {
+     "n": 1604,
+     "mean": 51.89,
+     "sd": 98.45,
+     "median_abs": 22.0,
+     "within_cse_tol": 0.5773,
+     "cse_tol_ms": 30.6
+    }
+   },
+   "counts": {
+    "P": {
+     "n_ref": 1401,
+     "n_matched": 1309,
+     "n_delineated": 1601,
+     "sensitivity": 0.9343
+    },
+    "QRS": {
+     "n_ref": 1817,
+     "n_matched": 1817,
+     "n_delineated": 1831,
+     "sensitivity": 1.0
+    },
+    "T": {
+     "n_ref": 1642,
+     "n_matched": 1604,
+     "n_delineated": 1831,
+     "sensitivity": 0.9769
+    }
+   }
+  },
+  "delineation_calibration_1_100": {
+   "errors_ms": {
+    "P_on": {
+     "n": 638,
+     "mean": -14.39,
+     "sd": 40.46,
+     "median_abs": 12.0,
+     "within_cse_tol": 0.4263,
+     "cse_tol_ms": 10.2
+    },
+    "P_off": {
+     "n": 638,
+     "mean": -11.39,
+     "sd": 14.63,
+     "median_abs": 10.0,
+     "within_cse_tol": 0.6332,
+     "cse_tol_ms": 12.7
+    },
+    "QRS_on": {
+     "n": 899,
+     "mean": 4.14,
+     "sd": 15.47,
+     "median_abs": 8.0,
+     "within_cse_tol": 0.4449,
+     "cse_tol_ms": 6.5
+    },
+    "QRS_off": {
+     "n": 899,
+     "mean": 0.86,
+     "sd": 18.57,
+     "median_abs": 6.0,
+     "within_cse_tol": 0.6774,
+     "cse_tol_ms": 11.6
+    },
+    "T_on": {
+     "n": 795,
+     "mean": 6.04,
+     "sd": 56.57,
+     "median_abs": 26.0
+    },
+    "T_off": {
+     "n": 795,
+     "mean": 53.55,
+     "sd": 99.0,
+     "median_abs": 24.0,
+     "within_cse_tol": 0.556,
+     "cse_tol_ms": 30.6
+    }
+   },
+   "counts": {
+    "P": {
+     "n_ref": 668,
+     "n_matched": 638,
+     "n_delineated": 798,
+     "sensitivity": 0.9551
+    },
+    "QRS": {
+     "n_ref": 899,
+     "n_matched": 899,
+     "n_delineated": 903,
+     "sensitivity": 1.0
+    },
+    "T": {
+     "n_ref": 808,
+     "n_matched": 795,
+     "n_delineated": 903,
+     "sensitivity": 0.9839
+    }
+   }
+  },
+  "delineation_heldout_101_200": {
+   "errors_ms": {
+    "P_on": {
+     "n": 671,
+     "mean": -3.06,
+     "sd": 35.26,
+     "median_abs": 12.0,
+     "within_cse_tol": 0.4784,
+     "cse_tol_ms": 10.2
+    },
+    "P_off": {
+     "n": 671,
+     "mean": -12.9,
+     "sd": 13.0,
+     "median_abs": 12.0,
+     "within_cse_tol": 0.5827,
+     "cse_tol_ms": 12.7
+    },
+    "QRS_on": {
+     "n": 918,
+     "mean": 3.0,
+     "sd": 11.72,
+     "median_abs": 4.0,
+     "within_cse_tol": 0.6068,
+     "cse_tol_ms": 6.5
+    },
+    "QRS_off": {
+     "n": 918,
+     "mean": 1.63,
+     "sd": 16.92,
+     "median_abs": 6.0,
+     "within_cse_tol": 0.7015,
+     "cse_tol_ms": 11.6
+    },
+    "T_on": {
+     "n": 809,
+     "mean": 22.23,
+     "sd": 47.24,
+     "median_abs": 34.0
+    },
+    "T_off": {
+     "n": 809,
+     "mean": 50.26,
+     "sd": 97.95,
+     "median_abs": 22.0,
+     "within_cse_tol": 0.5983,
+     "cse_tol_ms": 30.6
+    }
+   },
+   "counts": {
+    "P": {
+     "n_ref": 733,
+     "n_matched": 671,
+     "n_delineated": 803,
+     "sensitivity": 0.9154
+    },
+    "QRS": {
+     "n_ref": 918,
+     "n_matched": 918,
+     "n_delineated": 928,
+     "sensitivity": 1.0
+    },
+    "T": {
+     "n_ref": 834,
+     "n_matched": 809,
+     "n_delineated": 928,
+     "sensitivity": 0.97
+    }
+   }
+  },
+  "delineation_params": {
+   "qrs_slope_fraction": 0.03,
+   "qrs_hold_ms": 4.0,
+   "p_level_fraction": 0.25
+  }
+ }
+}

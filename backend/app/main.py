@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -53,6 +54,7 @@ async def lifespan(_app: FastAPI):
 def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title="ECG Annotation Studio API", version=__version__, lifespan=lifespan,
+                  root_path=os.getenv("ROOT_PATH", ""),
                   description="Praat-inspired, sample-accurate ECG annotation. Research prototype - not a medical device.")
     app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins), allow_methods=["*"],
                        allow_headers=["*"])

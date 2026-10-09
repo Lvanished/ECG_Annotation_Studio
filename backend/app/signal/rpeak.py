@@ -7,7 +7,10 @@ scheme with zero-phase filtering:
 2. five-point derivative, squaring, 150 ms moving-window integration (MWI)
 3. MWI peaks at least 200 ms apart (refractory period)
 4. adaptive signal/noise peak levels; threshold = NPKI + 0.25 (SPKI - NPKI)
-5. search-back with half threshold when an RR gap exceeds 1.66 x mean RR
+5. online search-back with half threshold when the RR gap exceeds 1.66 x the
+   mean of the last 8 RR intervals (the recovered beat updates SPKI with
+   weight 0.25); after 2.5 s without any beat the levels are re-learnt from
+   the preceding 2 s, so one large artefact cannot silence the detector
 6. T-wave rejection: a candidate within 360 ms of the previous beat whose
    maximal slope is < 50 % of the previous QRS slope is classified as T wave
 7. the R location is refined to the extreme of the 0.5-40 Hz filtered signal
@@ -25,7 +28,7 @@ import numpy as np
 from scipy.signal import butter, find_peaks, sosfiltfilt
 
 ALGORITHM = "scipy_pan_tompkins"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 
 @dataclass
@@ -48,7 +51,7 @@ def detect_pan_tompkins(x: np.ndarray, fs: float, offset: int = 0) -> RPeakResul
     x = np.asarray(x, dtype=np.float64)
     params = {"bandpass_hz": [5.0, 15.0], "mwi_ms": 150, "refractory_ms": 200, "threshold_fraction": 0.25,
               "searchback_rr_factor": 1.66, "t_wave_window_ms": 360, "refine_window_ms": [-150, 75],
-              "refine_band_hz": [0.5, 40.0]}
+              "refine_band_hz": [0.5, 40.0], "relearn_after_s": 2.5}
     if len(x) < int(fs):
         return RPeakResult(np.array([], dtype=np.int64), np.array([]), params, ALGORITHM, VERSION)
     bp = _bandpass(x, fs, 5.0, 15.0)
@@ -76,40 +79,53 @@ def detect_pan_tompkins(x: np.ndarray, fs: float, offset: int = 0) -> RPeakResul
         lo, hi = max(0, p - swin), min(len(deriv), p + 1)
         return float(np.max(np.abs(deriv[lo:hi]))) if hi > lo else 0.0
 
-    thr_hist = np.empty(len(cand))
+    relearn_gap = int(round(params["relearn_after_s"] * fs))
+    last_relearn = -relearn_gap
+
+    def add_beat(p: int, val: float, weight: float) -> None:
+        nonlocal spki
+        if beats:
+            rr.append(p - beats[-1])
+        beats.append(p)
+        scores.append(val / thr)
+        slopes.append(slope_at(p))
+        spki = weight * val + (1 - weight) * spki
+
+    def rr_avg() -> float:
+        return float(np.mean(rr[-8:])) if len(rr) >= 2 else 0.8 * fs
+
     for i, p in enumerate(int(c) for c in cand):
+        # online search-back (Pan & Tompkins): if the RR gap grows beyond 1.66 x
+        # the recent mean, accept the largest skipped candidate above half
+        # threshold and let it pull the signal level down.
+        while beats and p - beats[-1] > 1.66 * rr_avg():
+            lo, hi = beats[-1] + refractory, p - refractory
+            j0, j1 = np.searchsorted(cand, lo), np.searchsorted(cand, hi, side="right")
+            js = [j for j in range(j0, min(j1, i)) if mwi[cand[j]] > 0.5 * thr]
+            if not js:
+                break
+            j = max(js, key=lambda j: mwi[cand[j]])
+            add_beat(int(cand[j]), float(mwi[cand[j]]), 0.25)
+            thr = npki + 0.25 * (spki - npki)
+        # after a long silence (e.g. once a large artefact inflated SPKI),
+        # re-learn the levels from the preceding window as in the start-up phase
+        last = beats[-1] if beats else 0
+        if p - last > relearn_gap and p - last_relearn > relearn_gap:
+            win = mwi[max(0, p - int(2 * fs)): p]
+            if len(win):
+                spki = 0.25 * float(win.max())
+                npki = 0.5 * float(win.mean())
+                thr = npki + 0.25 * (spki - npki)
+            last_relearn = p
         val = float(mwi[p])
-        thr_hist[i] = thr
         if val > thr:
             if beats and p - beats[-1] < half_t and slopes and slope_at(p) < 0.5 * slopes[-1]:
                 npki = 0.125 * val + 0.875 * npki  # T wave
             else:
-                if beats:
-                    rr.append(p - beats[-1])
-                beats.append(p)
-                scores.append(val / thr)
-                slopes.append(slope_at(p))
-                spki = 0.125 * val + 0.875 * spki
+                add_beat(p, val, 0.125)
         else:
             npki = 0.125 * val + 0.875 * npki
         thr = npki + 0.25 * (spki - npki)
-
-    # search-back: one additional beat per abnormally long RR gap, at half threshold
-    added: list[tuple[int, float]] = []
-    for k in range(1, len(beats)):
-        gap = beats[k] - beats[k - 1]
-        local = np.median(np.diff(beats[max(0, k - 9): k])) if k >= 3 else gap
-        if gap > 1.66 * local:
-            lo, hi = beats[k - 1] + refractory, beats[k] - refractory
-            mask = (cand >= lo) & (cand <= hi)
-            idx = np.nonzero(mask)[0]
-            idx = [j for j in idx if mwi[cand[j]] > 0.5 * thr_hist[j]]
-            if idx:
-                j = max(idx, key=lambda j: mwi[cand[j]])
-                added.append((int(cand[j]), float(mwi[cand[j]] / thr_hist[j])))
-    for p, sc in added:
-        beats.append(p)
-        scores.append(sc)
 
     beats_arr = np.array(sorted(set(beats)), dtype=np.int64)
     score_map = dict(zip(beats, scores))

@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { @apply bg-slate-100 text-slate-800 text-xs antialiased; overflow: hidden; }
+
+@layer components {
+  .btn { @apply inline-flex items-center gap-1 rounded border border-slate-300 bg-white px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40; }
+  .btn-primary { @apply border-blue-600 bg-blue-600 text-white hover:bg-blue-700; }
+  .btn-danger { @apply border-red-300 text-red-700 hover:bg-red-50; }
+  .btn-active { @apply border-blue-500 bg-blue-50 text-blue-700; }
+  .inp { @apply rounded border border-slate-300 bg-white px-1.5 py-1 text-xs focus:border-blue-500 focus:outline-none; }
+  .lbl { @apply text-2xs font-semibold uppercase tracking-wide text-slate-500; }
+  .panel-title { @apply border-b border-slate-200 bg-slate-50 px-2 py-1 text-2xs font-semibold uppercase tracking-wide text-slate-600; }
+  .stable-gutter { scrollbar-gutter: stable; }
+}

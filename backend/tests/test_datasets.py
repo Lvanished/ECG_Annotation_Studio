@@ -107,3 +107,25 @@ def test_waveform_chunk_is_exact(client, mitdb100):
 def test_quality_indicators(client, ludb1):
     q = client.get(f"/recordings/{ludb1['id']}/quality", params={"leads": "II"}).json()["leads"]["II"]
     assert 0 <= q["flatline_fraction"] <= 1 and q["amplitude_range_mv"] > 0.3
+
+
+def test_npz_upload_roundtrip_and_unit_conversion(client):
+    """Upload the real LUDB record 1 (re-packed as NPZ, once in mV and once in uV) and read it back exactly."""
+    import io
+
+    p = ADAPTERS["ludb"].parse(PHYSIONET / "ludb", "1")
+    for units, factor in (("mV", 1.0), ("uV", 1000.0)):
+        buf = io.BytesIO()
+        np.savez(buf, signal=(p.signal * factor).astype(np.float32), fs=np.float64(p.fs), leads=np.asarray(p.leads),
+                 units=np.asarray([units] * len(p.leads)))
+        r = client.post("/recordings/upload", files={"file": ("ludb1.npz", buf.getvalue(), "application/octet-stream")})
+        assert r.status_code == 200, r.text
+        rec = r.json()
+        assert rec["dataset_id"] == "uploads" and rec["n_samples"] == 5000 and rec["leads"] == p.leads
+        assert rec["original_units"] == [units] * 12 and rec["units"] == ["mV"] * 12
+        got = client.get(f"/recordings/{rec['id']}/samples", params={"start": 0, "end": 5000, "leads": "II"}).json()
+        np.testing.assert_allclose(got["leads"]["II"], p.signal[:, 1], atol=1e-4)
+    bad = io.BytesIO()
+    np.savez(bad, signal=p.signal, fs=np.float64(p.fs), leads=np.asarray(p.leads[:3]))
+    assert client.post("/recordings/upload", files={"file": ("bad.npz", bad.getvalue())}).status_code == 422
+    assert client.post("/recordings/upload", files={"file": ("x.csv", b"1,2")}).status_code == 415

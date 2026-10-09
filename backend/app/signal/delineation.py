@@ -9,8 +9,8 @@ windows, but the search ranges are physiological priors.
 Per beat (signal filtered 0.5-40 Hz, baseline = median of the 60 ms before the
 QRS onset search region):
 
-* QRS onset/offset: walk outward from R until |dx/dt| stays below 12 % of the
-  beat's maximal QRS slope for 10 ms (max 120 ms before / 160 ms after R).
+* QRS onset/offset: walk outward from R until |dx/dt| stays below 3 % of the
+  beat's maximal QRS slope for 4 ms (max 120 ms before / 160 ms after R).
 * T wave: extremum (dominant polarity) in [QRS offset + 80 ms, min(R + 0.7 RR,
   next R - 120 ms)]; T offset = intersection of the steepest descending tangent
   after the peak with the baseline; T onset likewise before the peak (bounded by
@@ -18,6 +18,9 @@ QRS onset search region):
 * P wave: extremum in [R - 300 ms, QRS onset - 20 ms]; accepted only if the
   amplitude exceeds 0.04 mV and 2.5x the residual noise; onset/offset where the
   deviation falls below 25 % of the peak amplitude.
+
+The three thresholds (``PARAMS``) were grid-searched on LUDB records 1-100;
+records 101-200 are the held-out evaluation split.
 """
 from __future__ import annotations
 
@@ -25,7 +28,7 @@ import numpy as np
 from scipy.signal import butter, sosfiltfilt
 
 ALGORITHM = "experimental_slope_tangent_delineator"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 
 
 def _filt(x: np.ndarray, fs: float) -> np.ndarray:
@@ -39,8 +42,13 @@ def _tangent_cross(y: np.ndarray, d: np.ndarray, idx: int, base: float) -> float
     return idx + (base - y[idx]) / d[idx]
 
 
-def delineate(x: np.ndarray, fs: float, r_peaks: np.ndarray, offset: int = 0) -> list[dict]:
+# calibrated on LUDB records 1-100 only (scripts/calibrate_delineation.py)
+PARAMS = {"qrs_slope_fraction": 0.03, "qrs_hold_ms": 4.0, "p_level_fraction": 0.25}
+
+
+def delineate(x: np.ndarray, fs: float, r_peaks: np.ndarray, offset: int = 0, **overrides: float) -> list[dict]:
     """Return per-beat dict with absolute-sample boundaries (half-open intervals)."""
+    prm = {**PARAMS, **overrides}
     y = _filt(x, fs)
     d = np.gradient(y)
     n = len(y)
@@ -55,8 +63,8 @@ def delineate(x: np.ndarray, fs: float, r_peaks: np.ndarray, offset: int = 0) ->
         smax = float(np.max(np.abs(qwin))) if len(qwin) else 0.0
         if smax <= 0:
             continue
-        thr = 0.12 * smax
-        hold = max(1, ms(10))
+        thr = prm["qrs_slope_fraction"] * smax
+        hold = max(1, ms(prm["qrs_hold_ms"]))
         # QRS onset
         on = rp
         lim = max(1, rp - ms(120))
@@ -112,7 +120,7 @@ def delineate(x: np.ndarray, fs: float, r_peaks: np.ndarray, offset: int = 0) ->
             amp = float(seg[kp])
             noise = float(np.std(np.diff(y[p_lo:p_hi]))) * 2.5
             if abs(amp) > 0.04 and abs(amp) > noise:
-                lvl = 0.25 * abs(amp)
+                lvl = prm["p_level_fraction"] * abs(amp)
                 a = kp
                 while a > 0 and abs(seg[a]) > lvl:
                     a -= 1
