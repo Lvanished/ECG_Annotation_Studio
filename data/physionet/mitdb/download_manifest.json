@@ -1,0 +1,43 @@
+{
+  "dataset": "mitdb",
+  "version": "1.0.0",
+  "source": "https://physionet.org/files/mitdb/1.0.0/",
+  "license": "Open Data Commons Attribution License v1.0",
+  "records": {
+    "100": [
+      {
+        "file": "100.hea",
+        "sha256": "60ebc904c7bf3e04d142638d3fd5c903e8dc9f10f1ea3264e07926aa089ee75e",
+        "status": "downloaded"
+      },
+      {
+        "file": "100.dat",
+        "sha256": "b2ea3c250e56e48f4b7b90697832b8ecd1afa1e0bb31f2dcfea4ed6e1075a639",
+        "status": "downloaded"
+      },
+      {
+        "file": "100.atr",
+        "sha256": "8d8a5349fb16638ebbf649f1779d12e96d91b736b2aafe59db43719ae583d471",
+        "status": "downloaded"
+      }
+    ],
+    "105": [
+      {
+        "file": "105.hea",
+        "sha256": "9a024eebf8e9baf630308815e689d7e3eab471ab0069db6aded127c396418d48",
+        "status": "downloaded"
+      },
+      {
+        "file": "105.dat",
+        "sha256": "fcd0153dfea69c749194bb73de7db124588857cfa2f6aecb72754894c8afde02",
+        "status": "downloaded"
+      },
+      {
+        "file": "105.atr",
+        "sha256": "278d534c1ad952a6d41db963b6b2b00be070d8dd5fa66545caa5c18edcc36497",
+        "status": "downloaded"
+      }
+    ]
+  },
+  "failures": {}
+}

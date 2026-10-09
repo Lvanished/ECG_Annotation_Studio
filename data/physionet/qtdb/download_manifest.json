@@ -1,0 +1,103 @@
+{
+  "dataset": "qtdb",
+  "version": "1.0.0",
+  "source": "https://physionet.org/files/qtdb/1.0.0/",
+  "license": "Open Data Commons Attribution License v1.0",
+  "records": {
+    "sel100": [
+      {
+        "file": "sel100.hea",
+        "sha256": "561e939ae0becd28c196850a1933d12802286ff15e0a6a77c5a34246923b1e16",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.dat",
+        "sha256": "ce8ebe4f797decbec93d3aa6e0d0f13310529dcc3dd9a1a25debe94d7ea9d8b8",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.q1c",
+        "sha256": "ba50b0bac0af77e89317b4d4b66bda66872d877b4d0a234b30842ab620360915",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.atr",
+        "sha256": "13181945c7451af019a6a76efeb4b84be6e967f1596bc833aa31693a14149dcd",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.q2c",
+        "sha256": "04e86c5fbedf6fbcb489f59c98259476c6eeff2805ac22547c3d1af1ed68122f",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.pu",
+        "sha256": "5491c731b851ea8f8bf0dab824f1ed294f019609758fb0c8aa9923fba321a98b",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.pu0",
+        "sha256": "dca2f00339c0c63da72544382d0104cc0f95276729403bea4a32cf7318b21a41",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.pu1",
+        "sha256": "dd7615c2741876bb4f7b024b8c7ad4077dbdbc143bd3fabb7806b8da5e191333",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel100.man",
+        "sha256": "81e32bd0dd4af331cacfeac26999019a47cd307d09b1d8b940480e6d75764571",
+        "status": "downloaded"
+      }
+    ],
+    "sel103": [
+      {
+        "file": "sel103.hea",
+        "sha256": "3ffd5bb4eed34ce4d5c40ac1ac4564cc196c4110763ea77cdf4ddc8483f75833",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.dat",
+        "sha256": "565659ef2c76a591894b3af0f026b9a1a06b5e64edab90a7f33ca4b6d9a687eb",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.q1c",
+        "sha256": "74a55dc2ab62938ad5d4cff9212c94f293fa3ab2819c26005548f4668a54e603",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.atr",
+        "sha256": "373cc9a66af0990d603c443ad0a76927b427484708071fa933881c7fb476a697",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.q2c",
+        "sha256": "57ccdc90c68f23255e1589783350259a9f33d94a81a1958ee32c4b7e6eda42c1",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.pu",
+        "sha256": "5e554c6fecae7b68783d2c7dfa325016a58b0e7e6d72f1a9c636b8551ca67fff",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.pu0",
+        "sha256": "0bc1792ce5f9fb60a8f2463794200469eb6c77a32497a71117a4dcf5024a4a36",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.pu1",
+        "sha256": "b5d943e884f194e6a81ebbc154754f2259561457e85b323540081f54c8e4d44c",
+        "status": "downloaded"
+      },
+      {
+        "file": "sel103.man",
+        "sha256": "efeb44ec1d6c5ee771641c32268c4f5baacfee29aeaf206fce255b8f123bf31c",
+        "status": "downloaded"
+      }
+    ]
+  },
+  "failures": {}
+}
