@@ -58,6 +58,8 @@ Then open **http://localhost:5173**.
   `docker compose down` keeps them; `docker compose down -v` deletes **this
   project's** volumes only (project name `ecg-annotation-studio`).
 
+A control-by-control guide (Chinese) is in [`USER_MANUAL.md`](USER_MANUAL.md).
+
 ## Using the studio (quick tour)
 
 1. Pick a dataset and recording in the header (on an empty database press
@@ -135,6 +137,7 @@ Results are written to `docs/evaluation/results.json` and summarised in
 
 | Document | Content |
 |---|---|
+| `USER_MANUAL.md` | user guide for every on-screen control |
 | `docs/ARCHITECTURE.md` | components, data flow, rendering, persistence |
 | `docs/ANNOTATION_SCHEMA.md` | data model, ontology L0–L7, tiers, revisions, review |
 | `docs/DATA_FORMAT.md` | signal storage, dataset adapters, upload, snapshot format, masks |
